@@ -40,4 +40,33 @@ public class TableRonde{
       this.current_robot_cell.setPreviousCellRobot(new_robot_cell);
     }
   }
+
+  public void supprimer(int id){
+    // if empty
+    if (isEmpty()){
+      return;
+    }
+    if (this.current_robot_cell.getRobot().getId() == id){
+      this.current_robot_cell.getPreviousRobotCell().setNextCellRobot(this.current_robot_cell.getNextRobotCell());
+      this.current_robot_cell.getNextRobotCell().setPreviousCellRobot(this.current_robot_cell.getPreviousRobotCell());
+      this.current_robot_cell = this.current_robot_cell.getNextRobotCell();
+    }else{
+      this.current_robot_cell.supprimer(id);
+    }
+  }
+
+  public void supprimer(char nom){
+    // if empty
+    if (isEmpty()){
+      return;
+    }
+    if (this.current_robot_cell.getRobot().getNom() == nom){
+      this.current_robot_cell.getPreviousRobotCell().setNextCellRobot(this.current_robot_cell.getNextRobotCell());
+      this.current_robot_cell.getNextRobotCell().setPreviousCellRobot(this.current_robot_cell.getPreviousRobotCell());
+      this.current_robot_cell = this.current_robot_cell.getNextRobotCell();
+    }else{
+      this.current_robot_cell.supprimer(nom);
+    }
+    // if not empty
+  }
 }

@@ -30,12 +30,30 @@ public class CellRobot{
     CellRobot aux = this;
     do {
       aux.robot.description();
-      System.out.print(" ");
+      System.out.print("; ");
       aux = aux.next_robot_cell;
     } while (aux!=this);
   }
 
-  // public void ajoute(Robot r){
-  //
-  // }
+  public void supprimer(int id){
+    CellRobot cb = this.next_robot_cell;
+    while (cb!=this){
+      if (cb.getRobot().getId() == id){
+        cb.getPreviousRobotCell().setNextCellRobot(cb.getNextRobotCell());
+        cb.getNextRobotCell().setPreviousCellRobot(cb.getPreviousRobotCell());
+        break;
+      }else {cb=next_robot_cell;}
+    }
+  }
+
+  public void supprimer(char nom){
+    CellRobot cb = this.next_robot_cell;
+    while (cb!=this){
+      if (cb.getRobot().getNom() == nom){
+        cb.getPreviousRobotCell().setNextCellRobot(cb.getNextRobotCell());
+        cb.getNextRobotCell().setPreviousCellRobot(cb.getPreviousRobotCell());
+        break;
+      }else {cb=next_robot_cell;}
+    }
+  }
 }

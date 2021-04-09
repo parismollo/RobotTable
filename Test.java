@@ -50,5 +50,24 @@ public class Test {
     tr.getCurrentRobotCell().getPreviousRobotCell().getRobot().description();
     System.out.println();
     System.out.println("--------------END OF TESTS #4--------------");
+
+    System.out.println("--------------SET OF TESTS #5--------------");
+    tr.affiche();
+    tr.supprimer(1);
+    tr.getCurrentRobotCell().getRobot().description();
+    System.out.println();
+    // tr.supprimer(2);
+    tr.affiche();
+    System.out.println("--------------END OF TESTS #5--------------");
+
+
+    System.out.println("--------------SET OF TESTS #6--------------");
+    tr.affiche();
+    tr.supprimer('a');
+    tr.getCurrentRobotCell().getRobot().description();
+    System.out.println();
+    // tr.supprimer(2);
+    tr.affiche();
+    System.out.println("--------------END OF TESTS #6--------------");
   }
 }
