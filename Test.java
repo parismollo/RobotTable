@@ -26,5 +26,29 @@ public class Test {
     System.out.println("Current robot name "+current_robot.getNom());
     System.out.println();
     System.out.println("--------------END OF TESTS #2--------------");
+
+    System.out.println("--------------SET OF TESTS #3--------------");
+    tr.affiche();
+    System.out.println("--------------END OF TESTS #3--------------");
+
+    System.out.println("--------------SET OF TESTS #4--------------");
+    Robot r2 = new Robot('b', "super");
+    Robot r3 = new Robot('c', "cool");
+    tr.ajouteRobot(r2);
+    tr.ajouteRobot(r3);
+    tr.affiche();
+
+    System.out.print("Current Robot: ");
+    tr.getCurrentRobotCell().getRobot().description();
+    System.out.println();
+
+    System.out.print("Next Robot: ");
+    tr.getCurrentRobotCell().getNextRobotCell().getRobot().description();
+    System.out.println();
+
+    System.out.print("Last Robot: ");
+    tr.getCurrentRobotCell().getPreviousRobotCell().getRobot().description();
+    System.out.println();
+    System.out.println("--------------END OF TESTS #4--------------");
   }
 }

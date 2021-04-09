@@ -34,7 +34,7 @@ public class Robot{
     return this.nom;
   }
 
-  // public void description(){
-  //   System.out.println("Robot name: "+this.nom+" Robot id: "+this.id);
-  // }
+  public void description(){
+    System.out.print("Robot name: "+this.nom+" Robot id: "+this.id);
+  }
 }
