@@ -12,13 +12,25 @@ public class Robot{
 
   }
 
-  public boolean finiDeParler(int np){
-    if (np==0){return true;}
+  public boolean finiDeParler(){
+    if (this.np==0){return true;}
     else return false;
   }
 
   public int parle(int n){
-    System.out.println("J'ai prononcé "+n+" lettres")
-    return this.np - n;
+    System.out.println("J'ai prononce "+n+" lettres");
+    int previous_np = this.np;
+    this.np -= n;
+    return previous_np - n;
+  }
+
+  public int getId(){
+    return this.id;
+  }
+  public int getNp(){
+    return this.np;
+  }
+  public char getNom(){
+    return this.nom;
   }
 }
