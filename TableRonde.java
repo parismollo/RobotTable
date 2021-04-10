@@ -19,6 +19,11 @@ public class TableRonde{
     return (this.current_robot_cell==null);
   }
 
+  public int getSize(){
+    if (isEmpty()) {return 0;}
+    return this.current_robot_cell.getSize();
+  }
+
   public void affiche(){
     if (!isEmpty()) {
       System.out.print("[ ");
@@ -46,6 +51,10 @@ public class TableRonde{
     if (isEmpty()){
       return;
     }
+    if (this.current_robot_cell.getRobot().getId()==id && getSize()==1){
+      this.current_robot_cell = null;
+      return;
+    }
     if (this.current_robot_cell.getRobot().getId() == id){
       this.current_robot_cell.getPreviousRobotCell().setNextCellRobot(this.current_robot_cell.getNextRobotCell());
       this.current_robot_cell.getNextRobotCell().setPreviousCellRobot(this.current_robot_cell.getPreviousRobotCell());
@@ -60,6 +69,10 @@ public class TableRonde{
     if (isEmpty()){
       return;
     }
+    if (this.current_robot_cell.getRobot().getNom()==nom && getSize()==1){
+      this.current_robot_cell = null;
+      return;
+    }
     if (this.current_robot_cell.getRobot().getNom() == nom){
       this.current_robot_cell.getPreviousRobotCell().setNextCellRobot(this.current_robot_cell.getNextRobotCell());
       this.current_robot_cell.getNextRobotCell().setPreviousCellRobot(this.current_robot_cell.getPreviousRobotCell());
@@ -68,5 +81,30 @@ public class TableRonde{
       this.current_robot_cell.supprimer(nom);
     }
     // if not empty
+  }
+
+  public void discussionCycle(int min, int max){
+    if (isEmpty()) {System.out.println("Empty table");  return;}
+    int n = min + (int)(Math.random() * ((max - min) + 1));
+    this.current_robot_cell.getRobot().parle(n);
+    if(this.current_robot_cell.getRobot().finiDeParler()){
+      supprimer(this.current_robot_cell.getRobot().getId());
+    }else {
+      this.current_robot_cell.discussionCycle(min, max);
+    }
+  }
+
+  public void startDiscussion(){
+    System.out.println("Starting Robots meeting!!");
+    int i = 0;
+    affiche();
+    while (!isEmpty()){
+      i++;
+      discussionCycle(0, 5);
+      System.out.println("Discussion Cycle: "+i);
+      affiche();
+    }
+    System.out.println("Total Cycles: "+i);
+    System.out.println("Robots meeting is over!");
   }
 }

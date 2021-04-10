@@ -26,6 +26,16 @@ public class CellRobot{
   public CellRobot getPreviousRobotCell(){
     return this.previous_robot_cell;
   }
+
+  public int getSize(){
+    CellRobot cb = this;
+    int i = 0;
+    do {
+      i++;
+      cb = cb.next_robot_cell;
+    } while (cb != this);
+    return i;
+  }
   public void affiche(){
     CellRobot aux = this;
     do {
@@ -35,7 +45,7 @@ public class CellRobot{
     } while (aux!=this);
   }
 
-  public void supprimer(int id){
+  public void supprimer(int id){ // maybe is better to use a do while here...
     CellRobot cb = this.next_robot_cell;
     while (cb!=this){
       if (cb.getRobot().getId() == id){
@@ -56,4 +66,17 @@ public class CellRobot{
       }else {cb=next_robot_cell;}
     }
   }
+
+  public void discussionCycle(int min, int max){
+    CellRobot cb = this.next_robot_cell;
+    while (cb!=this){
+      int n = min + (int)(Math.random() * ((max - min) + 1));
+      cb.getRobot().parle(n);
+      if (cb.getRobot().finiDeParler()){
+        supprimer(cb.getRobot().getId());
+      }
+      cb = cb.next_robot_cell;
+    }
+  }
+
 }

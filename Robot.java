@@ -18,6 +18,12 @@ public class Robot{
   }
 
   public int parle(int n){
+    if (n>this.np) {
+      System.out.println("Warning: This robot has not enough letters for inputed n");
+      System.out.println("J'ai prononce "+this.np+" lettres (max allowed)");
+      this.np = 0;
+      return 0;
+    }
     System.out.println("J'ai prononce "+n+" lettres");
     int previous_np = this.np;
     this.np -= n;
